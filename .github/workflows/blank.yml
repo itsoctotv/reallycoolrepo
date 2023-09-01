@@ -31,6 +31,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: compiled-binary
+          path: .
       - name: Run multiple commands
      
         run: |
