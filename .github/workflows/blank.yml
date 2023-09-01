@@ -27,11 +27,11 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Compile Program
-        run: g++ helloworld.cpp -o helloworld
+      - run: g++ helloworld.cpp -o helloworld
 
       # Runs a set of commands using the runners shell
       - name: Run multiple commands
-        run: |
+      - run: |
           echo 1
           echo 2
           echo 3
