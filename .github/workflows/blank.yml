@@ -90,6 +90,7 @@ jobs:
           pwd
           ls -a
           chmod +x helloworld
+          echo "Executing Program"
           time ./helloworld
           echo "Application successfully deployed."
 
