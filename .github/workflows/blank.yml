@@ -64,6 +64,7 @@ jobs:
           hexdump -C helloworld
 
   lint-tests:
+    needs: build
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
