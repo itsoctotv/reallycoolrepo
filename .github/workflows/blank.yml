@@ -59,6 +59,7 @@ jobs:
           cat helloworld.cpp
           sleep 3
           echo "Showing hexdump of Binary"
+          cd binary/
           hexdump -C helloworld
 
   lint-tests:
