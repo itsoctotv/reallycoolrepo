@@ -28,12 +28,14 @@ jobs:
       - name: Compile Program
       # Runs a single command using the runners shell
        # run: g++ helloworld.cpp -o helloworld
-        run: ls -a
+        run: |
+          mkdir binary/
+          g++ helloworld.cpp -o binary/helloworld
       # Runs a set of commands using the runners shell
       - uses: actions/upload-artifact@v3
         with:
-          name: helloworld
-          path: .
+          name: helloworld-binary
+          path: ./binary
       - name: Run multiple commands
      
         run: |
@@ -49,7 +51,8 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/download-artifact@v3
         with:
-          name: compiled-binary
+          name: helloworld-binary
+          path: ./binary
       - name: Run Unittests
       
         run: |
@@ -74,7 +77,8 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/download-artifact@v3
         with:
-          name: compiled-binary
+          name: hellworld-binary
+          path: ./binary
       - name: Deployment 
       
         run: |
