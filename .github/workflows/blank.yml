@@ -23,15 +23,16 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Compile Program
+     
       - uses: actions/checkout@v3
-
+      - name: Compile Program
       # Runs a single command using the runners shell
       
         run: g++ helloworld.cpp -o helloworld
       # Runs a set of commands using the runners shell
+      - uses: actions/checkout@v3     
       - name: Run multiple commands
-      - uses: actions/checkout@v3
+     
         run: |
           echo 1
           echo 2
@@ -41,9 +42,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       
-      
-      - name: Run Unittests
       - uses: actions/checkout@v3
+      - name: Run Unittests
+      
         run: |
           echo "Showing source code"
           cat helloworld.cpp
@@ -54,16 +55,18 @@ jobs:
   lint-tests:
     runs-on: ubuntu-latest
     steps:
-      - name: Run Linttests
       - uses: actions/checkout@v3
+      - name: Run Linttests
+     
         run: ./tests.sh
 
   deploy:
     runs-on: ubuntu-latest
     steps:
       
-      - name: Deployment
       - uses: actions/checkout@v3
+      - name: Deployment
+      
         run: |
           ls -a
           time ./helloworld
