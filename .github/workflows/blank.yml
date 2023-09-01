@@ -87,6 +87,8 @@ jobs:
         run: |
           ls -a
           cd binary/
+          pwd
           time ./helloworld
           echo "Application successfully deployed."
+
 
