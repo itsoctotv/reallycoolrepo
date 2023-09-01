@@ -39,10 +39,9 @@ jobs:
       - name: Run multiple commands
      
         run: |
-          echo 1
-          sleep 10
-          echo 2
-          echo 3
+          echo "list directorys and files"
+          ls -a
+          
 
   unit-tests:
     runs-on: self-hosted
