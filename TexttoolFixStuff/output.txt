@@ -1,0 +1,55 @@
+ #cloud-config
+
+ # This is the user-data configuration file for cloud-init. By default this sets
+ # up an initial user called "caretaker" with password "caretaker", which must be
+ # changed at first login. However, many additional actions can be initiated on
+ # first boot from this file. The cloud-init documentation has more details:
+ #
+ # https://cloudinit.readthedocs.io/
+ #
+
+ # On first boot, set the (default) caretaker user's password to "caretaker" and
+ # expire user passwords
+ chpasswd:
+     expire: true
+     list:
+     - caretaker:caretaker
+
+ hostname: rpi-ghashr-455
+ # update /etc/hosts according to hostname (otherwise sudo will complain)
+ manage_etc_hosts: true
+ locale: en_US.UTF-8
+ timezone: Europe/Berlin
+
+ keyboard:
+     model: pc105
+     layout: de
+
+ # Enable password authentication with the SSH daemon
+ ssh_pwauth: true
+
+ ## Add users and groups to the system
+ users:
+ - default
+
+ # System and/or distro specific settings
+ # (not accessible to handlers/transforms)
+ system_info:
+     # Default user name + that default users groups (if added/used)
+     default_user:
+         name: caretaker
+         lock_passwd: True
+         gecos: Hausmeister
+         groups: [adm, audio, cdrom, dialout, dip, floppy, lxd, netdev, plugdev, sudo, video]
+         sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+         shell: /bin/bash
+
+ ## Update apt database and upgrade packages on first boot
+ package_update: true
+ package_upgrade: true
+ package_reboot_if_required: true
+
+ ## Install additional packages on first boot
+ # make your machine reachable by the .local domain
+ packages:
+ - avahi-daemon
