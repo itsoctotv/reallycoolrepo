@@ -1,3 +1,3 @@
-git add *
+aaagit add *
 git commit -m "debug"
 git push
